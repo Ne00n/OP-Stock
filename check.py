@@ -1,7 +1,7 @@
 import requests, json
 
 with open("creds.json") as handle: creds = json.loads(handle.read())
-print(creds)
+#print(creds)
 
 headers = {'Api-Key': creds['apiKey'],'Client-Key':creds['clientKey']}
 req = requests.get('https://api.oneprovider.com/vm/locations', headers=headers)
