@@ -21,7 +21,7 @@ for region,data in response['response'].items():
                 if os.path.isfile(country['location_id']): continue
                 #1055 is debian 12 btw
                 data = {"location_id": country['id'],"instance_size": min(country['available_sizes']),"template": "1055","hostname": "seek.code.run.com"}
-                response = requests.post(url, headers=headers, json=data)
+                response = requests.post('https://api.oneprovider.com/vm/create', headers=headers, json=data)
                 with open(country['location_id'], 'w') as file: file.write("purchased")
             else:
                 print(f"{country['country']} is not available")
