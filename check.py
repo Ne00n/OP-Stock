@@ -8,14 +8,13 @@ req = requests.get('https://api.oneprovider.com/vm/locations', headers=headers)
 #print(req.status_code)
 #print(f"Got {req.text} as response")
 
-seek = ['PT']
 response = req.json()
 for region,data in response['response'].items():
     #print(region,data)
     for country in data:
         #print(country)
         #print(countryData)
-        if country['country'] in seek:
+        if country['country'] in creds['seek']:
             if country['available_sizes']:
                 print(f"{country['country']} is available")
                 if os.path.isfile(country['location_id']): continue
